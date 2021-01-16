@@ -8,7 +8,11 @@ public class PointTest {
     @Test
     void twoPointsWithSameXAndYCoordinatesShouldHaveADistanceOfZero() {
         Point origin = new Point(0, 0);
-        Assertions.assertEquals(0, origin.distance(origin));
+        double expectedDistance = 0;
+
+        double distance = origin.distance(origin);
+
+        Assertions.assertEquals(expectedDistance, distance);
     }
 
     @Test
@@ -16,17 +20,25 @@ public class PointTest {
         Point origin = new Point(0, 0);
         Point point1 = new Point(1, 0);
         Point point2 = new Point(0, 1);
+        int expectedDistance = 1;
+        double distance;
 
-        Assertions.assertEquals(1, origin.distance(point1));
-        Assertions.assertEquals(1, origin.distance(point2));
+        distance = origin.distance(point1);
+        Assertions.assertEquals(expectedDistance, distance);
+
+        distance = origin.distance(point2);
+        Assertions.assertEquals(expectedDistance, distance);
     }
 
     @Test
     void distanceBetweenTwoOppositePointsOnUnitCircleShouldBeTwo() {
         Point point1 = new Point(1, 0);
         Point point2 = new Point(-1, 0);
+        double expectedDistance = 2;
 
-        Assertions.assertEquals(2, point1.distance(point2));
+        double distance = point1.distance(point2);
+
+        Assertions.assertEquals(expectedDistance, distance);
     }
 
     @Test
@@ -34,9 +46,14 @@ public class PointTest {
         Point origin = new Point(0, 0);
         Point point1 = new Point(1, 0);
         Point point2 = new Point(3, 0);
+        double expectedDirection = 0;
+        double direction;
 
-        Assertions.assertEquals(0, origin.direction(point1));
-        Assertions.assertEquals(0, origin.direction(point2));
+        direction = origin.direction(point1);
+        Assertions.assertEquals(expectedDirection, direction);
+
+        direction = origin.direction(point2);
+        Assertions.assertEquals(0, direction);
     }
 
     @Test
@@ -44,9 +61,14 @@ public class PointTest {
         Point origin = new Point(0, 0);
         Point point1 = new Point(-1, 0);
         Point point2 = new Point(-3, 0);
+        double expectedDirection = Math.PI;
+        double direction;
 
-        Assertions.assertEquals(Math.PI, origin.direction(point1));
-        Assertions.assertEquals(Math.PI, origin.direction(point2));
+        direction = origin.direction(point1);
+        Assertions.assertEquals(expectedDirection, direction);
+
+        direction = origin.direction(point2);
+        Assertions.assertEquals(expectedDirection, direction);
     }
 
     @Test
@@ -54,8 +76,13 @@ public class PointTest {
         Point origin = new Point(0, 0);
         Point point1 = new Point(0, 1);
         Point point2 = new Point(0, 3);
+        double expectedDirection = Math.PI / 2;
+        double direction;
 
-        Assertions.assertEquals(Math.PI / 2, origin.direction(point2));
-        Assertions.assertEquals(Math.PI / 2, origin.direction(point1));
+        direction = origin.direction(point1);
+        Assertions.assertEquals(expectedDirection, direction);
+
+        direction = origin.direction(point2);
+        Assertions.assertEquals(expectedDirection, direction);
     }
 }
